@@ -7,28 +7,36 @@ public class TestArithmetics2 {
     @Test
     public void testAdd() {
         Arithmetics a = new Arithmetics();
-        double resultAdd = a.add(7.0, 13.0);
-        if (resultAdd != 20.0) Assertions.fail("Error add method");
+        double result = a.add(7.0, 13.0);
+        Assertions.assertEquals(result, 20.0);
+//        Assertions.assertTrue(result == 20.0);
+//        Assertions.assertFalse(result == 21.0);
+        Assertions.assertNotEquals(result, 21.0);
+        Assertions.assertNotNull(a);
+        Assertions.assertNull(null);
     }
 
     @Test
     public void testDeduct() {
         Arithmetics a = new Arithmetics();
-        double resultDeduct = a.deduct(7.0, 13.0);
-        if (resultDeduct != -6.0) Assertions.fail("Error deduct method");
+        double result = a.deduct(7.0, 13.0);
+        Arithmetics b = new Arithmetics();
+        double result2 = a.deduct(7, 13);
+        Assertions.assertEquals(result, -6.0);
+        Assertions.assertSame(a, a);
     }
 
     @Test
     public void testMult() {
         Arithmetics a = new Arithmetics();
-        double resultMult = a.mult(7.0, 13.0);
-        if (resultMult != 91.0) Assertions.fail("Error mult method");
+        double result = a.mult(7.0, 13.0);
+        Assertions.assertEquals(result, 91.0);
     }
 
     @Test
     public void testDiv() {
         Arithmetics a = new Arithmetics();
-        double resultDiv = a.div(20.0, 4.0);
-        if (resultDiv != 5.0) Assertions.fail("Error div method");
+        double result = a.div(20.0, 4.0);
+        Assertions.assertEquals(result, 5.0);
     }
 }
