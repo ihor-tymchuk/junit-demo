@@ -2,13 +2,22 @@ package lesson1.test;
 
 import org.junit.BeforeClass;
 import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.rules.ExpectedException;
+import org.junit.rules.Timeout;
 
 import java.io.IOException;
 
 public class TestArithmetics3 {
     private static Arithmetics a;
+
+    @Rule
+    public final ExpectedException ex = ExpectedException.none();
+
+    @Rule
+    public Timeout time = new Timeout(1000);
 
     @BeforeClass
     public static void runT() {
@@ -41,7 +50,13 @@ public class TestArithmetics3 {
         Assertions.assertEquals(result, 5.0);
     }
 
-    @Test(timeout=1000)
+    @Test
+    public void testDivException() {
+        ex.expect(ArithmeticException.class);
+        a.div(20.0, 0);
+    }
+
+    @Test
     public void testTimeException() {
         while (true){
 
